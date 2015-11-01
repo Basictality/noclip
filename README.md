@@ -1,7 +1,7 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
  orbcol = "0,0,0"
-trailcol = "85,255,0"
+trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
  
