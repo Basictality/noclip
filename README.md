@@ -16,8 +16,8 @@ local Settings = {
     ["AudioID"] = 9,
        
         ["Sounds"] = {
-            163880175,
-            259816079,
+            225000651, --OMFG I love You
+            197494915, --Spooky scary skeletons MLG
             152533464,
             246448600,
             160666496,
