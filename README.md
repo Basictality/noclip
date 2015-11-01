@@ -17,7 +17,7 @@ local Settings = {
        
         ["Sounds"] = {
             225000651, --OMFG I love You
-            197494915, --Spooky scary skeletons MLG
+            259816079, --Spooky scary skeletons MLG
             152533464,
             246448600,
             160666496,
@@ -89,9 +89,11 @@ Spawnorb = function()
         Orb.Locked = true
         Orb.FormFactor = "Symmetric"
         Orb.Shape = "Ball"
+		OrbSpark=Instance.new('Sparkles',Orb)
+		OrbSpark.SparkleColor = Color3.new(0,85,0)
         Orb.Size = Vector3.new(1,1,1)
         Orb.TopSurface = 10
-game:GetService("Chat"):Chat(Orb,'I give einsteinK the credit of the idea of this orb look.',Enum.ChatColor.Blue)
+		game:GetService("Chat"):Chat(Orb,'I give einsteinK the credit of the idea of this orb look.',Enum.ChatColor.Green)
         Orb.BottomSurface = 10
         local Sound = Instance.new("Sound", Orb)
         Sound.SoundId = "rbxassetid://"..Settings.AudioID
