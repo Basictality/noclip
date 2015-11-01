@@ -1,5 +1,5 @@
 -------Settings-------
-Admin = "Player"
+Admin = "Basictality"
 Music = true
 Banned = "Test"
 
