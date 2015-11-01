@@ -19,7 +19,8 @@ local Settings = {
         ["Sounds"] = {
             225000651, --OMFG I love You
             259816079, --Spooky scary skeletons MLG
-            257275814
+            257275814,
+			142397652 --Hunger Games
         },
        
         ["Speed"] = 88
@@ -78,12 +79,7 @@ Spawnorb = function()
                         Orb:Destroy()
                 end)
         end
-		namemo = Instance.new('Model',workspace)
-		namemo.Name = Owner.Name.."'s bOrb v.1 Build 2"
-		humorb = Instance.new('Humanoid',namemo)
-		humorb.MaxHealth=0
-		humorb.Health=0
-        Orb = Instance.new('Part', namemo)
+        Orb = Instance.new('Part', workspace)
         Orb.Color = Color3.new(orbcol)
         Orb.Transparency = .1
 		Orb.Name = "Head"
@@ -96,6 +92,21 @@ Spawnorb = function()
         Orb.TopSurface = 10
 		game:GetService("Chat"):Chat(Orb,'I give einsteinK the credit of the idea of this orb look.',Enum.ChatColor.Green)
         Orb.BottomSurface = 10
+		gui=Instance.new("BillboardGui")
+		gui.Parent=Orb
+		gui.Adornee=Orb
+		gui.Size=UDim2.new(0,200,0,50)
+		gui.StudsOffset=Vector3.new(0,2,0)
+		text=Instance.new("TextLabel")
+		text.Text = Owner.Name.."'s bOrb v.1 Build 2"
+		text.Size=UDim2.new(0,50,0,50)
+		text.Position = UDim2.new(0, 70,0, -15)
+		text.BackgroundTransparency = 1
+		text.BorderSizePixel = 0
+		text.FontSize = "Size18"
+		text.TextColor3 = Color3.new(255,255,255)
+		text.Parent=gui
+		
 
         local Sound = Instance.new("Sound", Orb)
         Sound.SoundId = "rbxassetid://"..Settings.AudioID
@@ -105,7 +116,7 @@ Spawnorb = function()
         wait()
         Sound:Play()
         Orb.Changed:connect(function()
-                if not workspace:FindFirstChild(namemo.Name) then
+                if not workspace:FindFirstChild(Orb.Name) then
                         Spawnorb()
                 end
         end)
@@ -153,7 +164,7 @@ spawn(function()
                         Orb.CFrame = clerp(Orb.CFrame,
                                 Character
                                 *CFrame.new(0,3.7,0)
-                                *CFrame.Angles(0,Rot,(math.sin((tick())*1.3)*2.7)+13)
+                                *CFrame.Angles(0,Rot,(math.sin((tick())*3.7)*2.7)+13)
                                 *CFrame.new(Settings.Radius, math.sin((tick())*Settings.Bounce)*Settings.Height, 0)
                                 *CFrame.Angles(math.sin(tick()),math.sin(tick()),math.sin(tick()))
                         ,.1)
