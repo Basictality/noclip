@@ -192,15 +192,18 @@ game:service'InsertService':LoadAsset(125013769):children()[1].Parent = v.Backpa
   end;
 end;
 
-player = Owner
+player = meplyr
 player.Chatted:connect(function(message) chat(message, player) end)
 end
+-------------------------------------------
+--------------[END OF FUNCTION]------------
+-------------------------------------------
 
+
+
+-------------------------------------------
 --------------[ORB FUNCTION]---------------
 -------------------------------------------
----------------NEXT FUNCTION---------------
--------------------------------------------
-
 function bOrb()
 orbcol = "0,0,0"
 trailcol = "0,85,0"
@@ -375,6 +378,10 @@ spawn(function()
         end)
 end)
 end
+-------------------------------------------
+--------------[END OF FUNCTION]------------
+-------------------------------------------
 
 AdminCmds()
 bOrb()
+print'Admin cmds are still being worked on.'
