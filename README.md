@@ -1,6 +1,7 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
  orbcol = "0,0,0"
+print' Got orb!'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
@@ -108,7 +109,7 @@ Spawnorb = function()
         wait()
         Sound:Play()
         Orb.Changed:connect(function()
-                if not workspace:FindFirstChild(namemo.Orb.Name) then
+                if not workspace:FindFirstChild(namemo.Head) then
                         Spawnorb()
                 end
         end)
