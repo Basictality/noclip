@@ -1,7 +1,7 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
- orbcol = "Really black"
-trailcol = "Lime green"
+ orbcol = "0,0,0"
+trailcol = "85,255,0"
 local Character = nil
 local Orb = nil
  
@@ -82,7 +82,7 @@ Spawnorb = function()
                 end)
         end
         Orb = Instance.new('Part', workspace)
-        Orb.BrickColor = BrickColor.White()
+        Orb.Color = Color3.new(orbcol)
         Orb.Transparency = .1
         Orb.Anchored = true
         Orb.CanCollide = false
@@ -109,7 +109,7 @@ end Spawnorb()
 Spawntrail = function()
         if Orb ~= nil and Settings.Trail == true then
                 local Tail = Instance.new('Part', Orb)
-                Tail.BrickColor = BrickColor.new(trailcol)
+                Tail.Color = Color3.new(trailcol)
                 Tail.Transparency = .1
                 Tail.Anchored = true
                 Tail.CanCollide = false
