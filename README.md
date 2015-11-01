@@ -1,9 +1,8 @@
 wait()
+local Owner = game:GetService("Players").LocalPlayer
+ print'got orbed'
 trailcol = "Lime green"
 orbcol = "Really black"
-
-local Owner = game:GetService("Players").LocalPlayer
- 
 local Character = nil
 local Orb = nil
  
@@ -13,19 +12,7 @@ local Settings = {
         ["Radius"] = 7,
         ["Height"] = 1.2,
         ["Bounce"] = 2.7,
-       
-    ["AudioID"] = 9,
-       
-        ["Sounds"] = {
-            163880175,
-            259816079,
-            152533464,
-            246448600,
-            160666496,
-            155076577,
-            257275814
-        },
-       
+
         ["Speed"] = 88
 }
  
@@ -84,6 +71,7 @@ Spawnorb = function()
         end
         Orb = Instance.new('Part', workspace)
         Orb.BrickColor = BrickColor.new(orbcol)
+        Orb.Transparency = .1
         Orb.Anchored = true
         Orb.CanCollide = false
         Orb.Locked = true
@@ -92,6 +80,13 @@ Spawnorb = function()
         Orb.Size = Vector3.new(1,1,1)
         Orb.TopSurface = 10
         Orb.BottomSurface = 10
+        local Sound = Instance.new("Sound", Orb)
+        Sound.SoundId = "rbxassetid://"..Settings.AudioID
+        Sound.Volume = 1
+        Sound.Pitch = 1
+        Sound.Looped = true
+        wait()
+        Sound:Play()
         Orb.Changed:connect(function()
                 if not workspace:FindFirstChild(Orb.Name) then
                         Spawnorb()
@@ -112,11 +107,10 @@ Spawntrail = function()
                 Tail.CFrame = Orb.CFrame
                 Tail.TopSurface = 10
                 Tail.BottomSurface = 10
-
                 table.insert(TrailParts, Tail)
                 spawn(function()
                 for i=1, 0,-.064 do
-				_G.Random = "just test"
+                _G.nob = 'get rekt'
                 game:service'RunService'.RenderStepped:wait()
             end
         end)
