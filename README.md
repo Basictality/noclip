@@ -91,6 +91,7 @@ Spawnorb = function()
         Orb.Shape = "Ball"
         Orb.Size = Vector3.new(1,1,1)
         Orb.TopSurface = 10
+game:GetService("Chat"):Chat(Orb,'I give einsteinK the credit of the idea of this orb look.',Enum.ChatColor.Blue)
         Orb.BottomSurface = 10
         local Sound = Instance.new("Sound", Orb)
         Sound.SoundId = "rbxassetid://"..Settings.AudioID
@@ -109,7 +110,7 @@ end Spawnorb()
 Spawntrail = function()
         if Orb ~= nil and Settings.Trail == true then
                 local Tail = Instance.new('Part', Orb)
-                Tail.Color = Color3.new(trailcol)
+                Tail.Color = Color3.new(0,85,0)
                 Tail.Transparency = .1
                 Tail.Anchored = true
                 Tail.CanCollide = false
