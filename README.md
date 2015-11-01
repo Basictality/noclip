@@ -1,6 +1,6 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
- print'got orbed'
+ print'got orbed 1'
 trailcol = "Lime green"
 orbcol = "Really black"
 local Character = nil
@@ -80,13 +80,7 @@ Spawnorb = function()
         Orb.Size = Vector3.new(1,1,1)
         Orb.TopSurface = 10
         Orb.BottomSurface = 10
-        local Sound = Instance.new("Sound", Orb)
-        Sound.SoundId = "rbxassetid://"..Settings.AudioID
-        Sound.Volume = 1
-        Sound.Pitch = 1
-        Sound.Looped = true
         wait()
-        Sound:Play()
         Orb.Changed:connect(function()
                 if not workspace:FindFirstChild(Orb.Name) then
                         Spawnorb()
