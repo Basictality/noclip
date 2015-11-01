@@ -1,7 +1,7 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
  orbcol = "0,0,0"
-print'Do you even lift? [1]'
+print'Do you even lift? [2]'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
@@ -23,7 +23,7 @@ local Settings = {
 			142397652 --Hunger Games
         },
        
-        ["Speed"] = 66
+        ["Speed"] = 88
 }
  
 Owner.Chatted:connect(function(msg)
@@ -164,7 +164,7 @@ spawn(function()
                         Orb.CFrame = clerp(Orb.CFrame,
                                 Character
                                 *CFrame.new(0,3.7,0)
-                                *CFrame.Angles(0,Rot,(math.sin((tick())*3.7)*2.7)+13)
+                                *CFrame.Angles(0,Rot,(math.sin((tick())*1.3)*2.7)+15)
                                 *CFrame.new(Settings.Radius, math.sin((tick())*Settings.Bounce)*Settings.Height, 0)
                                 *CFrame.Angles(math.sin(tick()),math.sin(tick()),math.sin(tick()))
                         ,.1)
