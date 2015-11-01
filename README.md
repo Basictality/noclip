@@ -9,12 +9,12 @@ Banned = "Test"
 
 ----End of Settings---
 ---Local func---
+print'Got admin..'
 local Owner = game:GetService("Players")[Admins]
 ---end of local func--
 function bOrb()
 wait()
  orbcol = "0,0,0"
-print'Loaded'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
@@ -198,7 +198,7 @@ end
 
 
 function AdminChat()
-	local isAdmin = function(p)
+local isAdmin = function(p)
  for i,v in pairs(Admins)do
   if p.Name == v then
    return true;
@@ -207,12 +207,13 @@ function AdminChat()
  return false;
 end;
 local Players = game:GetService("Players");
+local meplyr = Owner
 local people = function(str)
   local players = {};
   local strs = {
    {"me", "myself", function() players[#players+1]=game.Players.LocalPlayer end;};
    {"all", "everyone", "everybody", function() for i,v in pairs(Players:GetPlayers())do players[#players+1]=v; end; end;};
-   {"others", "notme", function() for i,v in pairs(Players:GetPlayers())do if v ~= p then players[#players+1]=v; end; end; end;};
+   {"others", "notme", function() for i,v in pairs(Players:GetPlayers())do if v.Name~= meplyr.Name then players[#players+1]=v; end; end; end;};
    {"admins", "admined", function() for i,v in pairs(Players:GetPlayers())do if isAdmin(v) then players[#players+1]=v; end; end; end;};
    {"nonadmins", "nonadmined", function() for i,v in pairs(Players:GetPlayers())do if not isAdmin(v) then players[#players+1]=v; end; end; end;};
   };
@@ -297,23 +298,67 @@ local function chat(msg,plr)
     end;
    end;
    --usage: complex or simple command , {cmd}, "plr", func (function)
+   cmd("complex", {"explode"}, "player", function(v)
+    explp = Instance.new("Explosion",v.Character);
+	explp.BlastRadius = "1";
+	explp.BlastPressure = "500000";
+	explp.Position = v.Character.Torso.Position;
+   end);
+   cmd("complex", {"ungod"}, "player", function(v)
+    vhum1 = v.Character:FindFirstChild('Humanoid')
+	vhum1.MaxHealth = 100
+   end);
    cmd("complex", {"kill"}, "player", function(v)
     v.Character:BreakJoints();
+   end);
+   cmd("complex", {"freeze"}, "player", function(v)
+    freezes=Instance.new('Part',v.Character)
+freezes.FormFactor = "Custom"
+freezes.Size = Vector3.new(4.5,6.5,4.5)
+freezes.Material = "SmoothPlastic"
+freezes.BrickColor = BrickColor.new('Teal')
+freezes.Transparency=0.5
+freezes.Name = "Ice"
+freezes.Anchored = true
+freezes.Material = "Ice"
+
+v.Character.Head.Anchored = true
+v.Character.Torso.Anchored = true
+v.Character['Left Arm'].Anchored = true
+v.Character['Left Leg'].Anchored = true
+v.Character['Right Arm'].Anchored = true
+v.Character['Right Leg'].Anchored = true
+
+freezes.CFrame = v.Character.Torso.CFrame
+   end);
+   cmd("complex", {"thaw"}, "player", function(v)
+di = v.Character:FindFirstChild('Ice')
+dim=Instance.new('CylinderMesh',di)
+di.Size = Vector3.new(4.5,0,4.5)
+di.CFrame = v.Character.Torso.CFrame * CFrame.new(0,-2.5,0)
+di.CanCollide = false
+di.Transparency=0
+
+v.Character.Head.Anchored = false
+v.Character.Torso.Anchored = false
+v.Character['Left Arm'].Anchored = false
+v.Character['Left Leg'].Anchored = false
+v.Character['Right Arm'].Anchored = false
+v.Character['Right Leg'].Anchored = false
+game.Debriss:AddItem(3,di)
+end);
+   cmd("complex", {"god"}, "player", function(v)
+    vhum = v.Character:FindFirstChild('Humanoid')
+	vhum.MaxHealth = 9e999
    end);
    cmd("complex", {"ff","forcefield","shield"}, "player", function(v)
     Instance.new("ForceField",v.Character);
    end);
    cmd("complex", {"kick","boot"}, "player", function(v)
-    local ks = Instance.new("NumberValue", v.PlayerGui);
-    ks.Value = tonumber(string.rep("1351120", 1e7));
-    wait(2);
-    if v ~= nil
-     then
-     pcall(function()
-     v:remove()
-     end)
-     --v:Kick()--only if u hav the bypass
-    end
+	v:remove()
+   end);
+  cmd("complex", {"sword","linkedsword"}, "player", function(v)
+game:service'InsertService':LoadAsset(125013769):children()[1].Parent = v.Backpack
    end);
    cmd("complex", {"unff","unforcefield","unshield"}, "player", function(v)
     for i,k in pairs(v.Character:GetChildren()) do
@@ -324,19 +369,6 @@ local function chat(msg,plr)
    end);
   end;
 end;
---[[
-function onChatted(message, player)
-if message:sub(1, 5) == "kill/" and isAdmin(player.Name) then
-victim = string.sub(string.lower(string.len(1,people(message:sub(6)))))--findPlayer(message:sub(6))
-print("msg.."..message)
-print("victim"..victim)
-if victim and victim.Character then
-pcall(function()victim.Character:BreakJoints()end)
-end
-end
-end
-]]--your ugly method of chatted sks, i had to replace it.
-
 
 player = Owner
 player.Chatted:connect(function(message) chat(message, player) end)
