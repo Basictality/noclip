@@ -1,7 +1,7 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
  orbcol = "0,0,0"
-print'Do you even lift?'
+print'Do you even lift? [1]'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
@@ -23,7 +23,7 @@ local Settings = {
 			142397652 --Hunger Games
         },
        
-        ["Speed"] = 88
+        ["Speed"] = 66
 }
  
 Owner.Chatted:connect(function(msg)
