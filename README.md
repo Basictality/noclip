@@ -6,7 +6,7 @@ trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
 -----Settings-------
-Banned = {"CoreSB"}
+Banned = "CoreSB"
  
 local Settings = {
         ["Trail"] = true,
