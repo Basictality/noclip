@@ -1,12 +1,22 @@
+
+-------Settings-------
+Admin = "Basictality"
+Music = true
+Banned = "CoreSB"
+
+
+
+
+
+
+----End of Settings---
 wait()
-local Owner = game:GetService("Players").LocalPlayer
+local Owner = game:GetService("Players")[Admin]
  orbcol = "0,0,0"
 print'Loaded'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
------Settings-------
-Banned = "CoreSB"
  
 local Settings = {
         ["Trail"] = true,
@@ -21,7 +31,7 @@ local Settings = {
         ["Sounds"] = {
             225000651, --OMFG I love You
             259816079, --Spooky scary skeletons MLG
-            257275814,
+            276644890, -- Fetty Wap - 679 (FULL SONG)
 			142397652 --Hunger Games
         },
        
@@ -96,7 +106,8 @@ Spawnorb = function()
 		text.TextColor3 = Color3.new(255,255,255)
 		text.Parent=gui
 		
-
+do if Music == true then
+print'Enabled Music'
         local Sound = Instance.new("Sound", Orb)
         Sound.SoundId = "rbxassetid://"..Settings.AudioID
         Sound.Volume = 1
@@ -104,6 +115,10 @@ Spawnorb = function()
         Sound.Looped = true
         wait()
         Sound:Play()
+else
+print'Disabled Music.'
+end
+end
         Orb.Changed:connect(function()
                 if not workspace:FindFirstChild(Orb.Name) then
                         Spawnorb()
