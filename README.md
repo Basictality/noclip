@@ -1,7 +1,7 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
  orbcol = "0,0,0"
-print' Got orb!'
+print'Do you even lift?'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
@@ -19,10 +19,6 @@ local Settings = {
         ["Sounds"] = {
             225000651, --OMFG I love You
             259816079, --Spooky scary skeletons MLG
-            152533464,
-            246448600,
-            160666496,
-            155076577,
             257275814
         },
        
@@ -109,7 +105,7 @@ Spawnorb = function()
         wait()
         Sound:Play()
         Orb.Changed:connect(function()
-                if not workspace:FindFirstChild(namemo.Head) then
+                if not workspace:FindFirstChild(namemo.Name) then
                         Spawnorb()
                 end
         end)
