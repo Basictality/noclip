@@ -1,10 +1,12 @@
 wait()
 local Owner = game:GetService("Players").LocalPlayer
  orbcol = "0,0,0"
-print'Do you even lift? [2]'
+print'Loaded'
 trailcol = "0,85,0"
 local Character = nil
 local Orb = nil
+-----Settings-------
+Banned = {"CoreSB"}
  
 local Settings = {
         ["Trail"] = true,
@@ -26,26 +28,13 @@ local Settings = {
         ["Speed"] = 88
 }
  
-Owner.Chatted:connect(function(msg)
-    if msg:lower():sub(1,3) == "/e " then
-       msg = msg:sub(4)
-    end
-    if msg:lower():sub(1,6) == "speed " then
-       msg = tonumber(".0"..msg:sub(7))
-       Settings.Speed = tonumber(msg)
-    elseif msg:lower():sub(1,7) == "bounce " then
-       msg = tonumber(msg:sub(8))
-       Settings.Speed = tonumber(msg)
-    elseif msg:lower():sub(1,7) == "height " then
-       msg = tonumber(msg:sub(8))
-       Settings.Height = tonumber(msg)
-    elseif msg:lower():sub(1,5) == "trail" then
-        if Settings.Trail == true then
-            Settings.Trail = false
-        else
-            Settings.Trail = true
-        end
-    end
+------Banlist script-------
+game:GetService('RunService').Stepped:connect(function ()
+for i,v in pairs(game.Players:children()) do if
+	v.Name==Banned then
+	v:remove()
+	end
+end
 end)
  
 if script.ClassName == "LocalScript" then
