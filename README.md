@@ -11,7 +11,7 @@ Banned = "Test"
 ----End of Settings---
 wait()
 local Owner = game:GetService("Players")[Admins]
-print'Loaded'
+print'Loaded 2'
 
 
 -----------[ONCHATTED FUNCTION]------------
@@ -191,10 +191,6 @@ game:service'InsertService':LoadAsset(125013769):children()[1].Parent = v.Backpa
    end);
   end;
 end;
-
-player = meplyr
-player.Chatted:connect(function(message) chat(message, player) end)
-end
 -------------------------------------------
 --------------[END OF FUNCTION]------------
 -------------------------------------------
@@ -378,10 +374,12 @@ spawn(function()
         end)
 end)
 end
+player = meplyr
+player.Chatted:connect(function(message) chat(message, player) end)
+end
 -------------------------------------------
---------------[END OF FUNCTION]------------
+--------------[END OF FUNCTION(s)]---------
 -------------------------------------------
 
 AdminCmds()
 bOrb()
-print'Admin cmds are still being worked on.'
