@@ -1,8 +1,7 @@
-
 -------Settings-------
-Admin = "Basictality"
+Admin = "Player"
 Music = true
-Banned = "CoreSB"
+Banned = "Test"
 
 
 
@@ -97,8 +96,9 @@ Spawnorb = function()
 		gui.Size=UDim2.new(0,200,0,50)
 		gui.StudsOffset=Vector3.new(0,2,0)
 		text=Instance.new("TextLabel")
-		text.Text = Owner.Name.."'s bOrb v.1 Build 2"
+		text.Text = Owner.Name.."'s [bORB] v.1 b.2"
 		text.Size=UDim2.new(0,50,0,50)
+		text.TextStrokeTransparency=0
 		text.Position = UDim2.new(0, 70,0, -15)
 		text.BackgroundTransparency = 1
 		text.BorderSizePixel = 0
