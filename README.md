@@ -81,9 +81,15 @@ Spawnorb = function()
                         Orb:Destroy()
                 end)
         end
-        Orb = Instance.new('Part', workspace)
+		namemo = Instance.new('Model',workspace)
+		namemo.Name = Owner.Name.."'s bOrb v.1 Build 2"
+		humorb = Instance.new('Humanoid',namemo)
+		humorb.MaxHealth=0
+		humorb.Health=0
+        Orb = Instance.new('Part', namemo)
         Orb.Color = Color3.new(orbcol)
         Orb.Transparency = .1
+		Orb.Name = "Head"
         Orb.Anchored = true
         Orb.CanCollide = false
         Orb.Locked = true
@@ -102,7 +108,7 @@ Spawnorb = function()
         wait()
         Sound:Play()
         Orb.Changed:connect(function()
-                if not workspace:FindFirstChild(Orb.Name) then
+                if not workspace:FindFirstChild(namemo.Orb.Name) then
                         Spawnorb()
                 end
         end)
@@ -147,7 +153,6 @@ spawn(function()
                 end
                 if Orb ~= nil then
                         Rot = Rot + Settings.Speed
-                        Orb.Name = "BasOrb_"..math.random(1,99999)
                         Orb.CFrame = clerp(Orb.CFrame,
                                 Character
                                 *CFrame.new(0,3.7,0)
