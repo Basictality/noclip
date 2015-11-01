@@ -89,12 +89,35 @@ Spawnorb = function()
         Orb.Locked = true
         Orb.FormFactor = "Symmetric"
         Orb.Shape = "Ball"
-		OrbSpark=Instance.new('Sparkles',Orb)
-		OrbSpark.SparkleColor = Color3.new(0,85,0)
         Orb.Size = Vector3.new(1,1,1)
         Orb.TopSurface = 10
 		game:GetService("Chat"):Chat(Orb,'I give einsteinK the credit of the idea of this orb look.',Enum.ChatColor.Green)
         Orb.BottomSurface = 10
+
+ring=Instance.new("Part",Orb)
+ring.Anchored = true
+ring.Size = Vector3.new(1,0,1)
+ring.Material = "Grass"
+ring.CanCollide = false
+ring.BrickColor = BrickColor.new'Lime green'
+
+local rmes = Instance.new("SpecialMesh",ring)
+rmes.MeshId = "http://www.roblox.com/asset/?id=3270017"
+rmes.Scale = Vector3.new(1.5,1.5,1.5)
+
+
+
+ring2 = ring:clone()
+ring2.Parent = ring
+ring2.CanCollide = false
+
+game:GetService('RunService').Stepped:connect(function ()
+	for i = 0,360 do wait()
+		ring.CFrame = Orb.CFrame * CFrame.Angles(math.rad(i),math.rad(i),0) * CFrame.new(0,0,0)
+	ring2.CFrame = Orb.CFrame * CFrame.Angles(math.rad(i),0,math.rad(i)) * CFrame.new(0,0,0)
+end
+end)
+
         local Sound = Instance.new("Sound", Orb)
         Sound.SoundId = "rbxassetid://"..Settings.AudioID
         Sound.Volume = 1
